@@ -1,0 +1,22 @@
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Example: Create a DataFrame with hypothetical data on rewards for each credit card
+data = {
+    'Wells_Fargo': [2, 2, 2, 2],  # 2% cashback on all purchases
+    'Bank_of_America': [3, 2, 3, 3],  # 3% cash back in the chosen category, 2% at grocery stores and wholesale clubs, 1% on all other purchases
+    'Apple_Card': [5, 5, 3, 5],  # 5% Daily Cash for Apple Pay purchases, 3% for non-Apple Pay dining and travel
+    'Alaska_Airlines': [0, 3, 2, 0],  # Assumed values, adjust based on the terms of the card
+    'Costco_Citi_Card': [4, 3, 2, 1],  # 4% on gas, 3% on restaurants and travel, 2% at Costco, 1% on other purchases
+}
+
+categories = ['Groceries', 'Gas', 'Dining', 'Travel']
+
+df = pd.DataFrame(data, index=categories)
+
+# Create a heatmap
+plt.figure(figsize=(10, 6))
+sns.heatmap(df, annot=True, cmap="YlGnBu", fmt=".1f", cbar_kws={'label': 'Rewards (%)'})
+plt.title("Credit Card Rewards Comparison (Heatmap)")
+plt.show()
